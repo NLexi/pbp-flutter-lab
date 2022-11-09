@@ -120,14 +120,15 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             FloatingActionButton(
-              onPressed: _decrementCounter,
-              tooltip: 'decrement',
-              child: const Icon(Icons.remove),
-            ),
-            FloatingActionButton(
               onPressed: _incrementCounter,
               tooltip: 'increment',
               child: const Icon(Icons.add),
+            ),
+            if (_counter != 0)
+            FloatingActionButton(
+              onPressed: _decrementCounter,
+              tooltip: 'decrement',
+              child: const Icon(Icons.remove),
             ),
           ],
         ),
