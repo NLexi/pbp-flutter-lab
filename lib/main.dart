@@ -69,6 +69,14 @@ class _MyHomePageState extends State<MyHomePage> {
    });
   }
 
+  bool _visibility() {
+    if (_counter != 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -119,16 +127,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            Visibility (
+              visible: _visibility(),
+              child: FloatingActionButton(
+              onPressed: _decrementCounter,
+              tooltip: 'decrement',
+              child: const Icon(Icons.remove),
+              ),
+            ),
             FloatingActionButton(
               onPressed: _incrementCounter,
               tooltip: 'increment',
               child: const Icon(Icons.add),
-            ),
-            if (_counter != 0)
-            FloatingActionButton(
-              onPressed: _decrementCounter,
-              tooltip: 'decrement',
-              child: const Icon(Icons.remove),
             ),
           ],
         ),
