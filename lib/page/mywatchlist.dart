@@ -16,7 +16,8 @@ class MyWatchlistPage extends StatefulWidget {
 
 class _MyWatchlistState extends State<MyWatchlistPage> {
   Future<List<MyWatchlist>> fetchWatchlist() async {
-    var url = Uri.parse('https://pbp2022-katalog.herokuapp.com/mywatchlist/json/');
+    var url =
+        Uri.parse('https://pbp2022-katalog.herokuapp.com/mywatchlist/json/');
     var response = await http.get(
       url,
       headers: {
@@ -86,7 +87,8 @@ class _MyWatchlistState extends State<MyWatchlistPage> {
                 // Routing the menu to the form page
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const MyWatchlistPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const MyWatchlistPage()),
                 );
               },
             ),
@@ -94,62 +96,52 @@ class _MyWatchlistState extends State<MyWatchlistPage> {
         ),
       ),
       body: FutureBuilder(
-        future: fetchWatchlist(),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.data == null) {
-            return const Center(child: CircularProgressIndicator());
-          } else {
-            if (!snapshot.hasData) {
-              return Column(
-                children: const [
-                  Text(
-                    "My Watchlist is empty :(",
-                    style: TextStyle(
-                        color: Color(0xff59A5D8),
-                        fontSize: 20),
-                  ),
-                  SizedBox(height: 8),
-                ],
-              );
+          future: fetchWatchlist(),
+          builder: (context, AsyncSnapshot snapshot) {
+            if (snapshot.data == null) {
+              return const Center(child: CircularProgressIndicator());
             } else {
-              return ListView.builder(
+              if (!snapshot.hasData) {
+                return Column(
+                  children: const [
+                    Text(
+                      "My Watchlist is empty :(",
+                      style: TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                    ),
+                    SizedBox(height: 8),
+                  ],
+                );
+              } else {
+                return ListView.builder(
                   itemCount: snapshot.data!.length,
-                  itemBuilder: (_, index)=> Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  itemBuilder: (_, index) => Container(
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     padding: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
-                        color:Colors.white,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(15.0),
                         boxShadow: const [
-                          BoxShadow(
-                              color: Colors.black,
-                              blurRadius: 2.0
-                          )
-                        ]
-                    ),
+                          BoxShadow(color: Colors.black, blurRadius: 2.0)
+                        ]),
                     child: ListTile(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  MyWatchListDetails(
-                                    movie: snapshot.data![index],
-                                  ),
+                              builder: (context) => MyWatchListDetails(
+                                movie: snapshot.data![index],
+                              ),
                             ));
                       },
-                      title:
-                      Text(
-                        snapshot.data![index].fields.title,
-                        style: const TextStyle(fontWeight: FontWeight.bold)
-                      ),
+                      title: Text(snapshot.data![index].fields.title,
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                    ),
                   ),
-                ),
-              );
+                );
+              }
             }
-          }
-        }
-      ),
+          }),
     );
   }
 }

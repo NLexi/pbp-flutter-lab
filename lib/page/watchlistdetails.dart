@@ -56,7 +56,8 @@ class MyWatchListDetails extends StatelessWidget {
                 // Routing the menu to the form page
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const MyWatchlistPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const MyWatchlistPage()),
                 );
               },
             ),
@@ -71,9 +72,8 @@ class MyWatchListDetails extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Text(
                 movie.fields.title,
-                style: const TextStyle(
-                    fontSize: 24, fontWeight: FontWeight.bold
-                ),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -86,7 +86,8 @@ class MyWatchListDetails extends StatelessWidget {
               dense: true,
             ),
             ListTile(
-              leading: Text('Status: ${movie.fields.watched ? 'Watched' : 'Not Watched'}'),
+              leading: Text(
+                  'Status: ${movie.fields.watched ? 'Watched' : 'Not Watched'}'),
               dense: true,
             ),
             ListTile(
@@ -98,7 +99,8 @@ class MyWatchListDetails extends StatelessWidget {
               subtitle: Text(movie.fields.review),
             ),
             Container(
-              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.45),
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.45),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(

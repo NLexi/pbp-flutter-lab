@@ -72,7 +72,8 @@ class _MyFormPageState extends State<MyFormPage> {
                 // Routing the menu to the form page
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const MyWatchlistPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const MyWatchlistPage()),
                 );
               },
             ),
@@ -101,7 +102,7 @@ class _MyFormPageState extends State<MyFormPage> {
                       });
                     },
                     onSaved: (String? value) {
-                      setState (() {
+                      setState(() {
                         _title = value!;
                       });
                     },
@@ -170,31 +171,34 @@ class _MyFormPageState extends State<MyFormPage> {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.47),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.47),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.blue),
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            datalist.data.add(DataList(
+                                title: _title!,
+                                amount: _amount!,
+                                budgetType: budgetType!));
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyBudgetData()),
+                            );
+                          }
+                        },
+                        child: const Text(
+                          "Save",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          datalist.data.add(
-                              DataList(title: _title!, amount: _amount!, budgetType: budgetType!)
-                          );
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const MyBudgetData()),
-                          );
-                        }
-                      },
-                      child: const Text(
-                        "Save",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  )
-                ),
+                    )),
               ],
             ),
           ),

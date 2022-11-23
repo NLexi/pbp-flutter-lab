@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       if (_counter > 0) {
         _counter--;
       }
-   });
+    });
   }
 
   bool _visibility() {
@@ -140,7 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 // Routing the menu to the form page
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const MyWatchlistPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const MyWatchlistPage()),
                 );
               },
             ),
@@ -183,12 +184,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Visibility (
+            Visibility(
               visible: _visibility(),
               child: FloatingActionButton(
-              onPressed: _decrementCounter,
-              tooltip: 'decrement',
-              child: const Icon(Icons.remove),
+                onPressed: _decrementCounter,
+                tooltip: 'decrement',
+                child: const Icon(Icons.remove),
               ),
             ),
             FloatingActionButton(
