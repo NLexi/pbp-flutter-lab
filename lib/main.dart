@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterlab/Form.dart';
-import 'package:flutterlab/budget.dart';
+import 'package:flutterlab/page/Form.dart';
+import 'package:flutterlab/page/budget.dart';
+import 'package:flutterlab/page/mywatchlist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -97,6 +98,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             // Adding clickable menu
+            Ink(
+              color: Colors.blue,
+              child: const ListTile(
+                title: Text(''),
+              ),
+            ),
             ListTile(
               title: const Text('counter_7'),
               onTap: () {
@@ -124,6 +131,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const MyBudgetData()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('My Watchlist'),
+              onTap: () {
+                // Routing the menu to the form page
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyWatchlistPage()),
                 );
               },
             ),

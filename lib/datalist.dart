@@ -1,4 +1,4 @@
 library flutterlab.globals;
-import 'package:flutterlab/Form.dart';
+import 'package:flutterlab/model/budgetmodel.dart';
 
 List<DataList> data = [];

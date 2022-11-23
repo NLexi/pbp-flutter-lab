@@ -68,3 +68,29 @@ When we pop we remove that screen rom on top of the stack.
 - Display `data` in `budget.dart` using `ListView.builder`.
 - Modify `READ.ME` file in root folder.
 - Do `add`-`commit`-`push` into git repository.
+
+# Assignment 9
+
+### Can we retrieve JSON data without creating a model first? If yes, is it better than creating a model before retrieving JSON data?
+Yes, we can technically retrieve JSON data without creating a model. But if you do that, it'll be hard to debug and manage and will be very cluttered
+
+### List the widgets that you used in this project and explain their functions
+- `FutureBuilder` : Widget that builds itself based on the latest snapshot of interaction with a Future
+- `ListTile` : A widget to populate ListView and contains title, leading, as well as trailing
+- `ElevatedButton` : A bigger button
+- `SizedBox` : A box with a specified size
+
+### The mechanism of retrieving data from json so it can be shown in Flutter
+First, we can get the data by fetching it using `fetchWatchList` in `mywatchlist.dart`, it will then return objects that are stored in `mywatchlilstmodel.dart`. We then will call the function using `Future Builder` and it will return `ListView.builder` containing the mapped data.
+
+### Step by step process
+- Separate the pages into `model` and `page` folders.
+- Create a new dart file that stores MyWatchList model by using `Quicktype` to convert the JSON file.
+- Add dependencies and add `<uses-permission android:name="android.permission.INTERNET" />` in the android manifest file.
+- Create `mywatchlist.dart` that will be put into the `page` folder.
+- Retrieve data from MyWatchList URL by using the `http.get` method.
+- Create a new dart file that displays the details of the movie named `watchlistdetails.dart`.
+- Add a new ListTile menu for `mywatchlist.dart` and use the `FutureBuilder` used in the past lab.
+- Give the `ListView.builder` an `onTap()` attribute that redirects the user into `watchlistdetails.dart`.
+- Modify `READ.ME` file in root folder.
+- Do `add`-`commit`-`push` into git repository.

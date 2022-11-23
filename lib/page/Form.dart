@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterlab/main.dart';
-import 'package:flutterlab/budget.dart';
-import 'datalist.dart' as datalist;
+import 'package:flutterlab/page/budget.dart';
+import 'package:flutterlab/model/budgetmodel.dart';
+import 'package:flutterlab/page/mywatchlist.dart';
+import '../datalist.dart' as datalist;
 
 class MyFormPage extends StatefulWidget {
   const MyFormPage({super.key});
 
   @override
   State<MyFormPage> createState() => _MyFormPageState();
-}
-
-class DataList {
-  late String title;
-  late int amount;
-  late String budgetType;
-  DataList({required this.title, required this.amount, required this.budgetType});
 }
 
 class _MyFormPageState extends State<MyFormPage> {
@@ -35,6 +30,12 @@ class _MyFormPageState extends State<MyFormPage> {
         child: Column(
           children: [
             // Adding clickable menu
+            Ink(
+              color: Colors.blue,
+              child: const ListTile(
+                title: Text(''),
+              ),
+            ),
             ListTile(
               title: const Text('counter_7'),
               onTap: () {
@@ -62,6 +63,16 @@ class _MyFormPageState extends State<MyFormPage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const MyBudgetData()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('My Watchlist'),
+              onTap: () {
+                // Routing the menu to the form page
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyWatchlistPage()),
                 );
               },
             ),
@@ -159,7 +170,7 @@ class _MyFormPageState extends State<MyFormPage> {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.55),
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.47),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
